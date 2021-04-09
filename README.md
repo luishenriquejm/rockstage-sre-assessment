@@ -15,11 +15,10 @@ Here's an overview of what a WordPress website Deployment at Rock Stage looks li
   - you don't need to follow the architecture presented above - 1 container per WordPress deployment is fine
   - use whatever ports you like (they can be set manually)
 - Set a MySQL Deployment + Service
-  - Use a hostPath Persistent Volume for persistent storage
-  - Choose a ROOT_PASSWORD (we won't need it for the assessment, though)
+  - It should persist data even when the Pod restarts
   - Use this deployment as the WordPress deployments' database (create multiple DBs on it)
     - You'll need separate users and passwords for each deployment
-    - You can use whatever way you like to set the MySQL database/user/password to be used on wordpress-container (preferrably Secrets)
+    - You can use whatever way you like to set the MySQL database/user/password to be used on wordpress-container
   - Use whatever way you like to populate the MySQL instance (you can do it with a custom wordpress image on wordpress-container if you like)
 - Set PHPMyAdmin for sites
   - Every site "owner" should be able to access PHPMyAdmin
