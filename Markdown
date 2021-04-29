@@ -1,0 +1,1 @@
+1 - Configured MYSQL Statefullset so that replicas can have their own state for future clusters

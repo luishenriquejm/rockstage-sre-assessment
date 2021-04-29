@@ -1,3 +1,12 @@
+# USAGE
+
+Edit values.yml with your informations then install it
+
+# Install
+
+helm install release-name mysql
+helm install release-name wordpress
+
 # Rock Stage SRE Assessment
 
 ## About Rock Stage
