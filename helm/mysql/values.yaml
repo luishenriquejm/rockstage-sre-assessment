@@ -1,0 +1,18 @@
+appname: "wordpress-db-mysql"
+tier: "mysql"
+
+storage:
+   className: "wp-mysql-sc"
+   size: 20Gi
+   name: 'data-wp-mysql'
+   path: '/kubernetes/pv/db/mysql/'
+
+
+database:
+  name: WPCLIENTE1
+  password: c2VjcmV0
+  user: Y2xpZW50ZTE=
+  user_password: c2VjcmV0
+  init:
+    user: cliente1
+    password: secret

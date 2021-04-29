@@ -1,0 +1,16 @@
+appname: "wordpress"
+tier: "frontend"
+
+storage:
+   className: "wp-frontend-sc"
+   size: 20Gi
+   name: 'data-wp-frontend'
+   path: '/kubernetes/pv/frontend'
+
+database:
+  name: WPCLIENTE1
+  secretName: wordpress-db-mysql
+  key: mysql-password
+  host: wordpress-db-mysql
+  service: wordpress-db-mysql
+  user: cliente1
