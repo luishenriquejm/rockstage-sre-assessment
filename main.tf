@@ -1,6 +1,6 @@
 provider "kubernetes" {
   config_context_cluster   = "minikube"
-  host = "http://localhost:8080"
+  host = "https://localhost:8443"
 }
 
 

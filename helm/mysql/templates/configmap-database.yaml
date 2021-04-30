@@ -8,10 +8,3 @@ metadata:
 data:
   init.sql: |-
       SET @@global.time_zone = '-3:00';
-      CREATE DATABASE {{ .Values.database.name }};
-      CREATE USER '{{ .Values.database.init.user }}'@'%' IDENTIFIED BY '{{ .Values.database.init.password }}';
-      GRANT ALL PRIVILEGES ON {{ .Values.database.name }}.* TO '{{ .Values.database.init.user }}'@'%' WITH GRANT OPTION;
-      FLUSH PRIVILEGES;
-      CREATE USER 'mysqld-exporter' IDENTIFIED BY '123456' WITH MAX_USER_CONNECTIONS 3;
-      GRANT PROCESS, REPLICATION CLIENT, REPLICATION SLAVE, SELECT ON *.* TO 'mysqld-exporter';
-      FLUSH PRIVILEGES;
