@@ -1,9 +1,9 @@
 
- *** What has been done? ***
+# What has been done?
 
 * Customization of Helm Charts
-1 - Created a custom charts of MySQL and WordPress
-2 - 
+* Created a custom charts of MySQL and WordPress
+* 
 
     
 
