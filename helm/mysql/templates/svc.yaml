@@ -7,9 +7,10 @@ metadata:
     app: {{ .Values.appname }}
     tier: {{ .Values.tier }}
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
     - name: mysql
+      nodePort: 31010
       port: 3306
       protocol: TCP
       targetPort: mysql

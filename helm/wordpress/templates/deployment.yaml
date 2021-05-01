@@ -18,9 +18,12 @@ spec:
         tier: {{ .Values.tier }}
     spec:
       initContainers:
+        # - name: init-is-db
+        #   image: busybox:1.31
+        #   command: ['sh', '-c', 'echo -e "Checking for the availability of MySQL Server deployment"; while ! nc -z {{ .Values.database.service }} 3306; do sleep 1; printf "-"; done; echo -e "  >> MySQL Server has started";']
         - name: init-is-db
-          image: busybox:1.31
-          command: ['sh', '-c', 'echo -e "Checking for the availability of MySQL Server deployment"; while ! nc -z {{ .Values.database.service }} 3306; do sleep 1; printf "-"; done; echo -e "  >> MySQL Server has started";']
+          image: arey/mysql-client
+          command: ['-h wordpress-db-mysql.database.svc.cluster.local -u root -psecret --execute='CREATE DATABASE TESTE;']          
       containers:
       - image: wordpress:latest
         name: wordpress

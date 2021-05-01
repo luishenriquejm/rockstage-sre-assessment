@@ -20,11 +20,11 @@ terraform {
 }
 
 
-resource "kubernetes_namespace" "minikube-namespace-db" {
-  metadata {
-        name = "database"
-  }
-}
+# resource "kubernetes_namespace" "minikube-namespace-db" {
+#   metadata {
+#         name = "database"
+#   }
+# }
 
 resource "kubernetes_namespace" "minikube-namespace1" {
   metadata {
@@ -32,17 +32,17 @@ resource "kubernetes_namespace" "minikube-namespace1" {
   }
 }
 
-resource "kubernetes_namespace" "minikube-namespace2" {
-  metadata {
-        name = "cliente2"
-  }
-}
+# resource "kubernetes_namespace" "minikube-namespace2" {
+#   metadata {
+#         name = "cliente2"
+#   }
+# }
 
-resource "kubernetes_namespace" "minikube-namespace3" {
-  metadata {
-        name = "cliente3"
-  }
-}
+# resource "kubernetes_namespace" "minikube-namespace3" {
+#   metadata {
+#         name = "cliente3"
+#   }
+# }
 
 
 resource helm_release "mysql" {
@@ -65,12 +65,6 @@ resource helm_release "mysql" {
       value = "/kubernetes/pv/db/mysql_cliente/"
   }
 
-}
-
-resource "null_resource" "create_database_1" {
-  provisioner "local-exec" {
-    command = "kubectl -n database exec wordpress-db-mysql-0 -- mysql -u root -p secret -e CREATE DATABASE CLIENTE1; CREATE USER 'cliente1'@'%' IDENTIFIED BY 'cliente1'; GRANT ALL PRIVILEGES ON CLIENTE1.* TO 'cliente1'@'%' WITH GRANT OPTION; FLUSH PRIVILEGES;"
-  }
 }
 
 
