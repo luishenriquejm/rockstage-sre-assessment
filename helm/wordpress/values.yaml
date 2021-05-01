@@ -1,5 +1,6 @@
 appname: "wordpress"
 tier: "frontend"
+nodePort: 30011
 
 storage:
    className: "wp-frontend-sc"

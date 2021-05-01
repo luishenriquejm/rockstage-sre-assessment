@@ -7,11 +7,12 @@ metadata:
     app: {{ .Values.appname }}
     tier: {{ .Values.tier }}
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
     - name: {{ .Values.appname }}
       port: 80
       protocol: TCP
+      nodePort: {{ .Values.nodePort }}
   selector:
     app: {{ .Values.appname }}
     tier: {{ .Values.tier }}

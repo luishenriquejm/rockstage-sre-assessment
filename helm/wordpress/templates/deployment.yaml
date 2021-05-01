@@ -22,7 +22,7 @@ spec:
           image: busybox:1.31
           command: ['sh', '-c', 'echo -e "Checking for the availability of MySQL Server deployment"; while ! nc -z {{ .Values.database.host }} 3306; do sleep 1; printf "-"; done; echo -e "  >> MySQL Server has started";']
       containers:
-      - image: yuribucci/wordpress_custom:1.4
+      - image: yuribucci/wordpress_custom:2.1
         name: wordpress
         env:
         
