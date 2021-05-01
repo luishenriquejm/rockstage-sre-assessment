@@ -4,12 +4,21 @@ metadata:
   name:  {{ .Values.appname }}-entrypoint
 data:
   entrypoint.sh: |-
-      #!/bin/sh
-      RESULT=`mysql -h wordpress-db-mysql.database.svc.cluster.local -u root -psecret --skip-column-names -e "SHOW DATABASES LIKE 'cliente1'"`
-      if [ "$RESULT" == "cliente1" ]; then
-          /etc/init.d/apache2 start
+      #!/bin/
+      DBNAME="cliente1"
+      DBEXISTS=$(mysql --batch --skip-column-names -h wordpress-db-mysql.database.svc.cluster.local -u root -psecret -e "SHOW DATABASES LIKE '"$DBNAME"';" | grep "$DBNAME" > /dev/null; echo "$?")
+      if [ $DBEXISTS -eq 0 ];then
+        /etc/init.d/apache2 start
       else
-          mysql -h wordpress-db-mysql.database.svc.cluster.local -u root -psecret -e "CREATE DATABASE cliente1"
+        echo " database $DBNAME does not exist."
       fi
-      # mysql -h wordpress-db-mysql.database.svc.cluster.local -u root -psecret -e "CREATE DATABASE "
-      # mysql -h wordpress-db-mysql.database.svc.cluster.local -u root -psecret CLIENTE 1< database.sql
+      
+      
+      # RESULT=`mysql -h wordpress-db-mysql.database.svc.cluster.local -u root -psecret --skip-column-names -e "SHOW DATABASES LIKE 'cliente1'"`
+      # if [ "$RESULT" == "cliente1" ]; then
+      #     /etc/init.d/apache2 start
+      # else
+      #     mysql -h wordpress-db-mysql.database.svc.cluster.local -u root -psecret -e "CREATE DATABASE cliente1"
+      # fi
+      # # mysql -h wordpress-db-mysql.database.svc.cluster.local -u root -psecret -e "CREATE DATABASE "
+      # # mysql -h wordpress-db-mysql.database.svc.cluster.local -u root -psecret CLIENTE 1< database.sql
