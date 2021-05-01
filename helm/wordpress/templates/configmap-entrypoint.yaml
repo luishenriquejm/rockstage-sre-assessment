@@ -10,8 +10,8 @@ data:
       if [ $DBEXISTS -eq 0 ];then
         sh /usr/local/bin/docker-entrypoint.sh
       else
-        USUARIO=$({{ .Values.database.user }} | base64 --decode) 
-        SENHA=$({{ .Values.database.user_password }} | base64 --decode)
+        USUARIO=`{{ .Values.database.user }} | base64 --decode)`
+        SENHA=`{{ .Values.database.user_password }} | base64 --decode`
         mysql -h wordpress-db-mysql.database.svc.cluster.local -u root -psecret -e "CREATE DATABASE {{ .Values.database.name }}"
         mysql -h wordpress-db-mysql.database.svc.cluster.local -u root -psecret -e "CREATE USER '$USUARIO'@'%' IDENTIFIED BY '$SENHA';"
         mysql -h wordpress-db-mysql.database.svc.cluster.local -u root -psecret -e "GRANT ALL PRIVILEGES ON {{ .Values.database.name }}.* TO '$USUARIO'@'%' WITH GRANT OPTION;"
