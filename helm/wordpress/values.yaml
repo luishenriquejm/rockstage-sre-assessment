@@ -9,8 +9,7 @@ storage:
 
 database:
   name: WPCLIENTE1
-  password: c2VjcmV0
-  user: Y2xpZW50ZTE=
-  user_password: c2VjcmV0
-  host: wordpress-db-mysql.database.svc.cluster.local
-  usuario_cliente: cliente1
+  root_password: c2VjcmV0 # BASE64
+  host: wordpress-db-mysql.database.svc.cluster.local # FQDN COMPLETO INTERNO"
+  usuario: cliente1 # STRING
+  usuario_senha: secret #STRING
