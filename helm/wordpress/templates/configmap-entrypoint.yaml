@@ -4,9 +4,8 @@ metadata:
   name:  {{ .Values.appname }}-entrypoint
 data:
   entrypoint.sh: |-
-      #!/usr/bin/env
-      set -euo pipefail
-      IFS=$'\n\t'
+      #!/usr/bin/env bash
+      set -eo pipefail -ux
       DBNAME="{{ .Values.database.name }}"
       DBEXISTS=$(mysql --batch --skip-column-names -h wordpress-db-mysql.database.svc.cluster.local -u root -psecret -e "SHOW DATABASES LIKE '"$DBNAME"';" | grep "$DBNAME" > /dev/null; echo "$?")
       if [ $DBEXISTS -eq 0 ];then
