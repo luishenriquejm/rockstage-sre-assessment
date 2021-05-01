@@ -29,8 +29,8 @@ spec:
         - name: WORDPRESS_DB_HOST
           value: {{ .Values.database.host }}
         
-        - name: WORDPRESS_DB_USER
-          value: root
+        # - name: WORDPRESS_DB_USER
+        #   value: root
         
         - name: WORDPRESS_DB_NAME
           value: {{ .Values.database.name }}
@@ -43,6 +43,7 @@ spec:
             secretKeyRef:
               name: {{ .Values.appname }}
               key: "mysql-root-password"
+
         ports:
         - containerPort: 80
           name: {{ .Values.appname }}
