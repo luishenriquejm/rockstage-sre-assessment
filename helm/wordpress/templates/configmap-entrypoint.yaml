@@ -9,7 +9,7 @@ data:
       if [ "$RESULT" == "cliente1" ]; then
           /etc/init.d/apache2 start
       else
-          mysql -h wordpress-db-mysql.database.svc.cluster.local -u root -psecret -e "CREATE DATABASE cliente"
+          mysql -h wordpress-db-mysql.database.svc.cluster.local -u root -psecret -e "CREATE DATABASE cliente1"
       fi
       # mysql -h wordpress-db-mysql.database.svc.cluster.local -u root -psecret -e "CREATE DATABASE "
       # mysql -h wordpress-db-mysql.database.svc.cluster.local -u root -psecret CLIENTE 1< database.sql
