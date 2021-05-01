@@ -38,11 +38,11 @@ spec:
         - name: WORDPRESS_DEBUG
           value: "1"
 
-        - name: WORDPRESS_DB_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Values.appname }}
-              key: "mysql-root-password"
+        # - name: WORDPRESS_DB_PASSWORD
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: {{ .Values.appname }}
+        #       key: "mysql-root-password"
 
         ports:
         - containerPort: 80
