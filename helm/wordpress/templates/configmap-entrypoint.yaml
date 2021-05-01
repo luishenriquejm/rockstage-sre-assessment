@@ -4,7 +4,7 @@ metadata:
   name:  {{ .Values.appname }}-entrypoint
 data:
   entrypoint.sh: |-
-      #!/bin/bash
+      #!/usr/bin/env
       set -euo pipefail
       IFS=$'\n\t'
       DBNAME="{{ .Values.database.name }}"
