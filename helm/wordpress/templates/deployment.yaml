@@ -17,13 +17,16 @@ spec:
         app: {{ .Values.appname }}
         tier: {{ .Values.tier }}
     spec:
+
       initContainers:
       - name: init-is-db
         image: busybox:1.31
         command: ['sh', '-c', 'echo -e "Checking for the availability of MySQL Server deployment"; while ! nc -z {{ .Values.database.host }} 3306; do sleep 1; printf "-"; done; echo -e "  >> MySQL Server has started";']
+
       containers:
       - image: yuribucci/wordpress:latest
         name: wordpress
+        
         env:
         
         - name: WORDPRESS_DB_HOST
@@ -39,7 +42,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: {{ .Values.appname }}
-              key: "mysql-root-password"
+              key: mysql-root-password
 
         ports:
         - containerPort: 80
