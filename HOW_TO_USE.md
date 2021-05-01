@@ -1,2 +1,3 @@
-
-* minikube start --nodes 2 --driver=none
+```console
+minikube start --nodes 2 --driver=none
+```
