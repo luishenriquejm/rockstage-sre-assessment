@@ -17,44 +17,45 @@ spec:
         app: {{ .Values.appname }}
         tier: {{ .Values.tier }}
     spec:
-
       initContainers:
-      - name: init-is-db
-        image: busybox:1.31
-        command: ['sh', '-c', 'echo -e "Checking for the availability of MySQL Server deployment"; while ! nc -z {{ .Values.database.host }} 3306; do sleep 1; printf "-"; done; echo -e "  >> MySQL Server has started";']
-
+        - name: init-is-db
+          image: busybox:1.31
+          command: ['sh', '-c', 'echo -e "Checking for the availability of MySQL Server deployment"; while ! nc -z {{ .Values.database.host }} 3306; do sleep 1; printf "-"; done; echo -e "  >> MySQL Server has started";']
       containers:
-      - image: yuribucci/wordpress:latest
+      - image: wordpress:latest
         name: wordpress
-        
         env:
         
         - name: WORDPRESS_DB_HOST
           value: {{ .Values.database.host }}
         
         - name: WORDPRESS_DB_USER
-          value: root
+          value: {{ .Values.database.user }}
         
         - name: WORDPRESS_DB_NAME
           value: {{ .Values.database.name }}
+
+        - name: WORDPRESS_DEBUG
+          value: "1"
 
         - name: WORDPRESS_DB_PASSWORD
           valueFrom:
             secretKeyRef:
               name: {{ .Values.appname }}
               key: mysql-root-password
-
         ports:
         - containerPort: 80
           name: {{ .Values.appname }}
+
         volumeMounts:
+
         - name: {{ .Values.appname }}
           mountPath: "/var/www/html"
 
         - name: {{ .Values.appname }}-entrypoint
-          mountPath: /home/wso2carbon/docker-entrypoint.sh
-          subPath: docker-entrypoint.sh
-        
+          mountPath: /entrypoint/entrypoint.sh
+          subPath: entrypoint.sh
+
       volumes:
       - name: {{ .Values.appname }}
         persistentVolumeClaim:
