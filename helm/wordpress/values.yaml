@@ -13,3 +13,4 @@ database:
   user: Y2xpZW50ZTE=
   user_password: c2VjcmV0
   host: wordpress-db-mysql.database.svc.cluster.local
+  usuario_cliente: cliente1

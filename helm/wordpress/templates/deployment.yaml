@@ -52,8 +52,12 @@ spec:
         - name: {{ .Values.appname }}
           mountPath: "/var/www/html"
 
+        - name: {{ .Values.appname }}-database
+          mountPath: /sql/init.sql
+          subPath: init.sql
+
         - name: {{ .Values.appname }}-entrypoint
-          mountPath: /entrypoint/entrypoint.sh
+          mountPath: /usr/local/bin/entrypoint.sh
           subPath: entrypoint.sh
 
       volumes:
@@ -65,3 +69,7 @@ spec:
         configMap:
           name: {{ .Values.appname }}-entrypoint
           defaultMode: 0777
+
+      - name: {{ .Values.appname }}-database
+        configMap:
+          name: {{ .Values.appname }}-database
