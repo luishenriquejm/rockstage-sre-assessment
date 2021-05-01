@@ -1,0 +1,23 @@
+appname: "wordpress"
+tier: "frontend"
+nodePort: 30011
+
+
+wordpress:
+  endereco_web: 192.168.15.88
+
+phpmyadmin:
+  nodePort: 30012
+
+storage:
+   className: "wp-frontend-sc"
+   size: 20Gi
+   name: 'data-wp-frontend'
+   path: '/kubernetes/pv/frontend'
+
+database:
+  name: WPCLIENTE1
+  root_password: "c2VjcmV0" # BASE64
+  host: "wordpress-db-mysql.database.svc.cluster.local" # FQDN COMPLETO INTERNO"
+  usuario: "cliente1" # STRING
+  usuario_senha: "secret" #STRING
