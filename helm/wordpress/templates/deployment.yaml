@@ -18,9 +18,9 @@ spec:
         tier: {{ .Values.tier }}
     spec:
       initContainers:
-        - name: init-is-db
-          image: busybox:1.31
-          command: ['sh', '-c', 'echo -e "Checking for the availability of MySQL Server deployment"; while ! nc -z {{ .Values.database.host }} 3306; do sleep 1; printf "-"; done; echo -e "  >> MySQL Server has started";']
+      - name: init-is-db
+        image: busybox:1.31
+        command: ['sh', '-c', 'echo -e "Checking for the availability of MySQL Server deployment"; while ! nc -z {{ .Values.database.host }} 3306; do sleep 1; printf "-"; done; echo -e "  >> MySQL Server has started";']
       containers:
       - image: yuribucci/wordpress:latest
         name: wordpress
@@ -34,9 +34,6 @@ spec:
         
         - name: WORDPRESS_DB_NAME
           value: {{ .Values.database.name }}
-
-        # - name: WORDPRESS_DEBUG
-        #   value: "1"
 
         - name: WORDPRESS_DB_PASSWORD
           valueFrom:
