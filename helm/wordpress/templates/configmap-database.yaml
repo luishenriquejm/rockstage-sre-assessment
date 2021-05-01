@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name:  {{ .Values.appname }}-database
 data:
-  database.sql: |-
+  init.sql: |-
       -- phpMyAdmin SQL Dump
       -- version 5.1.0
       -- https://www.phpmyadmin.net/

@@ -4,11 +4,10 @@ metadata:
   name:  {{ .Values.appname }}-entrypoint
 data:
   entrypoint.sh: |-
-      #!/bin/
+      #!/usr/bin/env bash
       DBNAME="{{ .Values.database.name }}"
       DBEXISTS=$(mysql --batch --skip-column-names -h wordpress-db-mysql.database.svc.cluster.local -u root -psecret -e "SHOW DATABASES LIKE '"$DBNAME"';" | grep "$DBNAME" > /dev/null; echo "$?")
       if [ $DBEXISTS -eq 0 ];then
-        #!/usr/bin/env bash
         set -Eeuo pipefail
 
         if [[ "$1" == apache2* ]] || [ "$1" = 'php-fpm' ]; then
