@@ -52,16 +52,16 @@ spec:
         - name: {{ .Values.appname }}
           mountPath: "/var/www/html"
 
-        - name: {{ .Values.appname }}-entrypoint
-          mountPath: /entrypoint/entrypoint.sh
-          subPath: entrypoint.sh
+        # - name: {{ .Values.appname }}-entrypoint
+        #   mountPath: /entrypoint/entrypoint.sh
+        #   subPath: entrypoint.sh
 
       volumes:
       - name: {{ .Values.appname }}
         persistentVolumeClaim:
           claimName: {{ .Values.appname }}
 
-      - name: {{ .Values.appname }}-entrypoint
-        configMap:
-          name: {{ .Values.appname }}-entrypoint
-          defaultMode: 0777
+      # - name: {{ .Values.appname }}-entrypoint
+      #   configMap:
+      #     name: {{ .Values.appname }}-entrypoint
+      #     defaultMode: 0777
