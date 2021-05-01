@@ -5,7 +5,7 @@ metadata:
 data:
   entrypoint.sh: |-
       #!/bin/sh
-      RESULT=`mysql -h -h wordpress-db-mysql.database.svc.cluster.local -u root -psecret --skip-column-names -e "SHOW DATABASES LIKE 'cliente1'"`
+      RESULT=`mysql -h wordpress-db-mysql.database.svc.cluster.local -u root -psecret --skip-column-names -e "SHOW DATABASES LIKE 'cliente1'"`
       if [ "$RESULT" == "cliente1" ]; then
           /etc/init.d/apache2 start
       else
