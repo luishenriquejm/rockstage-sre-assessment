@@ -111,8 +111,8 @@ data:
       --
 
       INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
-      (1, 'siteurl', 'http://localhost:80', 'yes'),
-      (2, 'home', 'http://localhost:80', 'yes'),
+      (1, 'siteurl', 'http://0.0.0.0:{{ .Values.nodePort }}', 'yes'),
+      (2, 'home', 'http://0.0.0.0:{{ .Values.nodePort }}', 'yes'),
       (3, 'blogname', '{{ .Values.database.name }}', 'yes'),
       (4, 'blogdescription', 'Just another WordPress site', 'yes'),
       (5, 'users_can_register', '0', 'yes'),
@@ -432,8 +432,8 @@ data:
       (48, 3, 'session_tokens', 'a:1:{s:64:\"a9941922a661ffe0ba5e45711dbdf5afa57ab8c8dea17b35885c857f9e2938d0\";a:4:{s:10:\"expiration\";i:1619973723;s:2:\"ip\";s:12:\"192.168.58.2\";s:2:\"ua\";s:130:\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.49\";s:5:\"login\";i:1619800923;}}'),
       (49, 3, 'wp_dashboard_quick_press_last_post_id', '5'),
       (50, 3, 'community-events-location', 'a:1:{s:2:\"ip\";s:12:\"192.168.58.0\";}'),
-      (51, 4, 'nickname', '{{ .Values.database.usuario_cliente }}'),
-      (52, 4, 'first_name', '{{ .Values.database.usuario_cliente }}'),
+      (51, 4, 'nickname', 'usuario01'),
+      (52, 4, 'first_name', 'usuario01'),
       (53, 4, 'last_name', 'Sobrenome'),
       (54, 4, 'description', ''),
       (55, 4, 'rich_editing', 'true'),
@@ -472,7 +472,7 @@ data:
 
       INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `user_registered`, `user_activation_key`, `user_status`, `display_name`) VALUES
       (3, 'admin', '$P$BS9zj5E29IXuZb/uUU2mzmzA57An0h1', 'admin', 'admin@dominio.com.br', 'https://www.linkedin.com/in/yuribucci/', '2021-04-30 16:41:25', '1619800885:$P$B57MQbRFnGERCY0wo/f9fPckc9rGJs0', 0, 'Yuri Bucci'),
-      (4, '{{ .Values.database.usuario_cliente }}', '$P$Bv/8NWDPCueSpbHHE0HYQxzhpwtfbS.', '{{ .Values.database.usuario_cliente }}', 'email@email.com.br', '', '2021-04-30 16:43:20', '1619801000:$P$B0dHrFV/kEy1L0yieFiCreiEYRJNCZ.', 0, '{{ .Values.database.usuario_cliente }} Sobrenome');
+      (4, 'usuario01', '$P$Bv/8NWDPCueSpbHHE0HYQxzhpwtfbS.', 'usuario01', 'email@email.com.br', '', '2021-04-30 16:43:20', '1619801000:$P$B0dHrFV/kEy1L0yieFiCreiEYRJNCZ.', 0, 'usuario01 Sobrenome');
 
       --
       -- Índices para tabelas despejadas
