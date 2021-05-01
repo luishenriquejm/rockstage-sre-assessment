@@ -18,21 +18,11 @@ spec:
         tier: {{ .Values.tier }}
     spec:
       initContainers:
-        # - name: init-is-db
-        #   image: busybox:1.31
-        #   command: ['sh', '-c', 'echo -e "Checking for the availability of MySQL Server deployment"; while ! nc -z {{ .Values.database.service }} 3306; do sleep 1; printf "-"; done; echo -e "  >> MySQL Server has started";']
-        - name: database-setup
-          image: mysql:5.7
-          imagePullPolicy: IfNotPresent
-          command: [sh,-c,mysql -h wordpress-db-mysql.database.svc.cluster.local -psecret -e "CREATE DATABASE IF NOT EXISTS TESTE DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; "]
-            # - CREATE DATABASE IF NOT EXISTS $WORDPRESS_DB_NAME DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-            # - GRANT ALL PRIVILEGES ON $WORDPRESS_DB_NAME.* TO '$WORDPRESS_DB_USER'@'%' IDENTIFIED BY '$WORDPRESS_DB_PASSWORD';
-            # - FLUSH PRIVILEGES;
-            # - EXIT;
-
-
+        - name: init-is-db
+          image: busybox:1.31
+          command: ['sh', '-c', 'echo -e "Checking for the availability of MySQL Server deployment"; while ! nc -z {{ .Values.database.host }} 3306; do sleep 1; printf "-"; done; echo -e "  >> MySQL Server has started";']
       containers:
-      - image: wordpress:latest
+      - image: yuribucci/wordpress:latest
         name: wordpress
         env:
         
@@ -40,7 +30,7 @@ spec:
           value: {{ .Values.database.host }}
         
         - name: WORDPRESS_DB_USER
-          value: {{ .Values.database.user }}
+          value: root
         
         - name: WORDPRESS_DB_NAME
           value: {{ .Values.database.name }}
@@ -51,15 +41,25 @@ spec:
         - name: WORDPRESS_DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: {{ .Values.database.secretName }}
-              key: {{ .Values.database.key }}
+              name: {{ .Values.appname }}
+              key: mysql-root-password
         ports:
         - containerPort: 80
           name: {{ .Values.appname }}
         volumeMounts:
         - name: {{ .Values.appname }}
           mountPath: "/var/www/html"
+
+        - name: {{ .Values.appname }}-entrypoint
+          mountPath: /home/wso2carbon/docker-entrypoint.sh
+            subPath: docker-entrypoint.sh
+        
       volumes:
       - name: {{ .Values.appname }}
         persistentVolumeClaim:
           claimName: {{ .Values.appname }}
+
+      - name: {{ .Values.appname }}-entrypoint
+        configMap:
+          name: {{ .Values.appname }}-entrypoint
+          defaultMode: 0777

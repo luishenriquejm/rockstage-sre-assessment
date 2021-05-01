@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name:  {{ .Values.appname }}-entrypoint
+data:
+  docker-entrypoint.sh: |-
+      #!/bin/sh
+      RESULT=`mysql -h -h wordpress-db-mysql.database.svc.cluster.local -u root -psecret --skip-column-names -e "SHOW DATABASES LIKE 'cliente1'"`
+      if [ "$RESULT" == "cliente1" ]; then
+          echo "Database exist"
+      else
+          mysql -h wordpress-db-mysql.database.svc.cluster.local -u root -psecret -e "CREATE DATABASE cliente"
+      fi
+      # mysql -h wordpress-db-mysql.database.svc.cluster.local -u root -psecret -e "CREATE DATABASE "
+      # mysql -h wordpress-db-mysql.database.svc.cluster.local -u root -psecret CLIENTE 1< database.sql
