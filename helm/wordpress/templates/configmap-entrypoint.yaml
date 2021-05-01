@@ -16,3 +16,4 @@ data:
         mysql -h wordpress-db-mysql.database.svc.cluster.local -u root -psecret -e "CREATE DATABASE FLUSH PRIVILEGES;"
         mysql -h wordpress-db-mysql.database.svc.cluster.local -u root -psecret {{ .Values.database.name }} < /sql/init.sql
         sh /usr/local/bin/docker-entrypoint.sh
+      fi
