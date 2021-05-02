@@ -5,6 +5,8 @@ nodePort: 30011
 
 wordpress:
   endereco_web: 192.168.15.88
+  usuario: usuario01
+  usuario_senha: secret
 
 phpmyadmin:
   nodePort: 30012

@@ -57,6 +57,17 @@ resource helm_release "wordpress" {
   namespace  = "${var.namespace_1}"
 
   set {
+      name = "wordpress.usuario"
+      value = "${var.wp1_user}"
+  }
+
+  set {
+      name = "wordpress.usuario_senha"
+      value = md5("${var.wp1_user_password}")
+  }
+
+
+  set {
       name = "phpmyadmin.nodePort"
       value = "${var.wp1_phpmyadmin_nodeport}"
   }
@@ -130,6 +141,16 @@ resource helm_release "wordpress_2" {
   namespace  = "${var.namespace_2}"
 
   set {
+      name = "wordpress.usuario"
+      value = "${var.wp2_user}"
+  }
+
+  set {
+      name = "wordpress.usuario_senha"
+      value = md5("${var.wp2_user_password}")
+  }
+
+  set {
       name = "phpmyadmin.nodePort"
       value = "${var.wp2_phpmyadmin_nodeport}"
   }
@@ -201,6 +222,17 @@ resource helm_release "wordpress_3" {
   name       = "${var.wp3_helm_name}"
   chart      = "./helm/wordpress"
   namespace  = "${var.namespace_3}"
+
+  set {
+      name = "wordpress.usuario"
+      value = "${var.wp3_user}"
+  }
+
+  set {
+      name = "wordpress.usuario_senha"
+      value = md5("${var.wp3_user_password}")
+  }
+
 
   set {
       name = "phpmyadmin.nodePort"

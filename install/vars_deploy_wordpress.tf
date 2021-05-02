@@ -34,6 +34,18 @@ variable namespace_3 {
 
 ### CLIENT 1 ###
 
+variable wp1_user {
+  type        = string
+  default     = "fulano"
+  description = "User of Wordpress"
+}
+
+variable wp1_user_password {
+  type        = string
+  default     = "secret"
+  description = "Password user of Wordpress"
+}
+
 variable wp1_phpmyadmin_nodeport {
   type        = string
   default     = "30012"
@@ -101,6 +113,18 @@ variable wp1_user_password_db {
 }
 
 ### CLIENT 2 ###
+
+variable wp2_user {
+  type        = string
+  default     = "fulano02"
+  description = "User of Wordpress"
+}
+
+variable wp2_user_password {
+  type        = string
+  default     = "secret"
+  description = "Password user of Wordpress"
+}
 
 variable wp2_phpmyadmin_nodeport {
   type        = string
@@ -170,6 +194,18 @@ variable wp2_user_password_db {
 
 
 ### CLIENT 3 ###
+
+variable wp3_user {
+  type        = string
+  default     = "fulano3"
+  description = "User of Wordpress"
+}
+
+variable wp3_user_password {
+  type        = string
+  default     = "secret"
+  description = "Password user of Wordpress"
+}
 
 variable wp3_phpmyadmin_nodeport {
   type        = string
