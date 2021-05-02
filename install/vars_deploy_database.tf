@@ -33,7 +33,7 @@ variable database_storage_size {
 
 variable database_storage_path {
   type        = string
-  default     = "/kubernetes/pv/db/mysql_cliente/"
+  default     = "/kubernetes/pv/db/mysql/"
   description = "Database PersistentVolume mountpath"
 }
 
