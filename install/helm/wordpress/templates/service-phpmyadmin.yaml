@@ -6,11 +6,12 @@ metadata:
   labels:
     app: phpmyadmin
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
     - name: phpmyadmin
       port: 80
       targetPort: 80
       protocol: TCP
+      nodePort: {{ .Values.phpmyadmin.nodePort }}
   selector:
     app: phpmyadmin
