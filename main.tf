@@ -71,7 +71,7 @@ resource helm_release "mysql" {
 
   set {
       name = "database.root_password" # BASE64
-      value = base64encode[(${var.database_root_password})]
+      value = base64encode("${var.database_root_password}")
       # value = "c2VjcmV0"
   }
 
