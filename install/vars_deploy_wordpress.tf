@@ -167,7 +167,7 @@ variable wp3_app_name {
 
 variable wp3_nodeport {
   type        = string
-  default     = "30021"
+  default     = "30031"
   description = "NodePort of App"
 }
 
