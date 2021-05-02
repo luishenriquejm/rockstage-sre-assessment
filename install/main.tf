@@ -55,6 +55,7 @@ resource helm_release "wordpress" {
   name       = "${var.wp1_helm_name}"
   chart      = "./helm/wordpress"
   namespace  = "${var.namespace_1}"
+  depends_on = [helm_release.mysql]
 
   set {
       name = "phpmyadmin.nodeport"
@@ -118,7 +119,7 @@ resource helm_release "wordpress_2" {
   name       = "${var.wp2_helm_name}"
   chart      = "./helm/wordpress"
   namespace  = "${var.namespace_2}"
-
+  depends_on = [helm_release.wordpress, helm_release.mysql]
   set {
       name = "phpmyadmin.nodeport"
       value = "${var.wp2_phpmyadmin_nodeport}"
@@ -181,6 +182,8 @@ resource helm_release "wordpress_3" {
   name       = "${var.wp3_helm_name}"
   chart      = "./helm/wordpress"
   namespace  = "${var.namespace_3}"
+  depends_on = [helm_release.wordpress, helm_release.wordpress_2, helm_release.mysql]
+  
 
   set {
       name = "phpmyadmin.nodeport"
