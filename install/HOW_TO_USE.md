@@ -4,6 +4,7 @@
 
 * Install Minikube
 * Install Terraform inside machine of minikube
+* Install Helm V3
 
 ```console
 minikube start
