@@ -21,5 +21,6 @@ vars_deploy_wordpress.tf
 ## Deploy with terraform
 
 ```console
+terraform init
 terraform apply
 ```
