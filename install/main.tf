@@ -114,7 +114,7 @@ resource helm_release "wordpress" {
 
 #### CLIENT 2 ###
 
-resource helm_release "wordpress" {
+resource helm_release "wordpress_2" {
   name       = "${var.wp2_helm_name}"
   chart      = "./helm/wordpress"
   namespace  = "${var.namespace_2}"
@@ -177,7 +177,7 @@ resource helm_release "wordpress" {
 
 #### CLIENT 3 ###
 
-resource helm_release "wordpress" {
+resource helm_release "wordpress_3" {
   name       = "${var.wp3_helm_name}"
   chart      = "./helm/wordpress"
   namespace  = "${var.namespace_3}"
