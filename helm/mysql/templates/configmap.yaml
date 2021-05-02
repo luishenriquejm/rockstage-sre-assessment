@@ -35,10 +35,3 @@ data:
     port=3306
     socket=/opt/bitnami/mysql/tmp/mysql.sock
     pid-file=/opt/bitnami/mysql/tmp/mysqld.pid
-
-  init.sql: |-
-      SET @@global.time_zone = '-3:00';
-      CREATE DATABASE WORDPRESS_CLIENTE1;
-      CREATE USER '{{ .Values.database.user }}' IDENTIFIED BY '{{ .Values.database.user_password }}';
-      GRANT ALL ON WORDPRESS_CLIENTE1.* TO '{{ .Values.database.user }}'@'%' IDENTIFIED BY '{{ .Values.database.user_password }}';
-

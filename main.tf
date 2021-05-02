@@ -1,12 +1,11 @@
 provider "kubernetes" {
-  config_context_cluster   = "minikube"
-  host = "https://localhost:8443"
+  # config_context_cluster = "minikube"
+  host = "https://127.0.0.1:8443"
 }
-
 
 provider "helm" {
   kubernetes {
-    config_path = "~/.kube/config"
+    host = "https://127.0.0.1:8443"
   }
 }
 
@@ -18,7 +17,6 @@ terraform {
     }
   }
 }
-
 
 resource "kubernetes_namespace" "minikube-namespace-db" {
   metadata {
@@ -46,33 +44,38 @@ resource "kubernetes_namespace" "minikube-namespace3" {
 
 
 resource helm_release "mysql" {
-  name       = "mysql"
+  name       = "wp-database"
   chart      = "./helm/mysql"
   namespace  = "database"
 
   set {
       name = "appname"
-      value = "wordpress-db-mysql"
+      value = "${var.database_app_name}"
   }
 
   set {
       name = "storage.size"
-      value = "20Gi"
+      value = "${var.database_storage_size}"
   }
 
   set {
       name = "storage.path"
-      value = "/kubernetes/pv/db/mysql_cliente/"
+      value = "${var.database_storage_path}"
+  }
+
+  set {
+      name = "database.name"
+      value = "${var.database_name}"
+  }
+
+
+  set {
+      name = "database.root_password" # BASE64
+      value = encode(${var.database_root_password},encoding="standard") string
+      value = "c2VjcmV0"
   }
 
 }
-
-
-
-
-
-
-
 
 
 # # Configure the MySQL provider
