@@ -9,5 +9,4 @@ storage:
    path: '/kubernetes/pv/db/mysql/'
 
 database:
-  name: WPCLIENTE1
   root_password: c2VjcmV0

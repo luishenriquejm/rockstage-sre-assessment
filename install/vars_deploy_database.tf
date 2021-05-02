@@ -1,9 +1,27 @@
-
 ### MYSQL DATABASE ###
+
+variable database_namespace {
+  type        = string
+  default     = "database"
+  description = "Name of Namespace"
+}
+
+variable database_helm_name {
+  type        = string
+  default     = "wp-database"
+  description = "Helm App Name"
+}
+
 variable database_app_name {
   type        = string
   default     = "wordpress-db-mysql"
   description = "k8S App Name"
+}
+
+variable database_host_address {
+  type        = string
+  default     = "${var.database_app_name}.${var.database_namespace}.svc.cluster.local"
+  description = "nameofservice.namespace.svc.domain"
 }
 
 variable database_storage_size {
