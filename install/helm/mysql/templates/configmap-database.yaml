@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.appname }}-database
+  labels:
+    app: {{ .Values.appname }}
+    tier: {{ .Values.tier }}
+data:
+  init.sql: |-
+      SET @@global.time_zone = '-3:00';

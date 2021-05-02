@@ -1,9 +1,9 @@
 
-#### CLIENT 1 ####
+### MYSQL DATABASE ###
 variable database_app_name {
   type        = string
   default     = "wordpress-db-mysql"
-  description = "Helm App Name"
+  description = "k8S App Name"
 }
 
 variable database_storage_size {
