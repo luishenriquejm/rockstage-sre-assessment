@@ -57,7 +57,7 @@ resource helm_release "wordpress" {
   namespace  = "${var.namespace_1}"
 
   set {
-      name = "phpmyadmin.nodeport"
+      name = "phpmyadmin.nodePort"
       value = "${var.wp1_phpmyadmin_nodeport}"
   }
 
@@ -130,7 +130,7 @@ resource helm_release "wordpress_2" {
   namespace  = "${var.namespace_2}"
 
   set {
-      name = "phpmyadmin.nodeport"
+      name = "phpmyadmin.nodePort"
       value = "${var.wp2_phpmyadmin_nodeport}"
   }
 
@@ -203,7 +203,7 @@ resource helm_release "wordpress_3" {
   namespace  = "${var.namespace_3}"
 
   set {
-      name = "phpmyadmin.nodeport"
+      name = "phpmyadmin.nodePort"
       value = "${var.wp3_phpmyadmin_nodeport}"
   }
 
