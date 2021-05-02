@@ -2,6 +2,13 @@ appname: "wordpress"
 tier: "frontend"
 nodePort: 30011
 
+
+wordpress:
+  endereco_web: 192.168.15.88
+
+phpmyadmin:
+  nodePort: 30012
+
 storage:
    className: "wp-frontend-sc"
    size: 20Gi

@@ -111,8 +111,8 @@ data:
       --
 
       INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
-      (1, 'siteurl', 'http://0.0.0.0:{{ .Values.nodePort }}', 'yes'),
-      (2, 'home', 'http://0.0.0.0:{{ .Values.nodePort }}', 'yes'),
+      (1, 'siteurl', 'http://{{ .Values.wordpress.endereco_web }}:{{ .Values.nodePort }}', 'yes'),
+      (2, 'home', 'http://{{ .Values.wordpress.endereco_web }}:{{ .Values.nodePort }}', 'yes'),
       (3, 'blogname', '{{ .Values.database.name }}', 'yes'),
       (4, 'blogdescription', 'Just another WordPress site', 'yes'),
       (5, 'users_can_register', '0', 'yes'),
