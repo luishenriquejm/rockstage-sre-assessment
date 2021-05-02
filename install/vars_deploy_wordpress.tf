@@ -6,7 +6,7 @@
 ####################################################################
 variable wp_lan_ip_address {
   type        = string
-  default     = "192.168.15.18"
+  default     = "192.168.15.88"
   description = "Put here the LAN IP Address (localhost/127.0.0.1 if run locally) of the server for correctly work, if incorrectly, that's needed to change directly in database"
 }
 ####################################################################
