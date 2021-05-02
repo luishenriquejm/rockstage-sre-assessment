@@ -1,5 +1,5 @@
 
-## What has been done?
+# What has been done?
 
 * Configured MYSQL Statefullset so that replicas can have their own state for future clusters
 * Added Init Container to wait for conection with MySQL
