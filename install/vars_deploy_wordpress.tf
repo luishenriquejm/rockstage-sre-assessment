@@ -61,13 +61,19 @@ variable wp1_nodeport {
 variable wp1_storage_size {
   type        = string
   default     = "20Gi"
-  description = "Database PersistentVolume and StorageClass size"
+  description = "App PersistentVolume and StorageClass size"
 }
 
 variable wp1_storage_path {
   type        = string
-  default     = "/kubernetes/pv/db/wordpress/"
-  description = "Database PersistentVolume mountpath"
+  default     = "/kubernetes/pv/wordpress/"
+  description = "PersistentVolume mountpath"
+}
+
+variable wp1_storage_classname {
+  type        = string
+  default     = "wp-frontend-sc"
+  description = "App StorageClass"
 }
 
 variable wp1_database_name {
@@ -117,13 +123,19 @@ variable wp2_nodeport {
 variable wp2_storage_size {
   type        = string
   default     = "20Gi"
-  description = "Database PersistentVolume and StorageClass size"
+  description = "App PersistentVolume and StorageClass size"
 }
 
 variable wp2_storage_path {
   type        = string
-  default     = "/kubernetes/pv/db/wordpress_2/"
-  description = "Database PersistentVolume mountpath"
+  default     = "/kubernetes/pv/wordpress_2/"
+  description = "App PersistentVolume mountpath"
+}
+
+variable wp2_storage_classname {
+  type        = string
+  default     = "wp2-frontend-sc"
+  description = "App StorageClass"
 }
 
 variable wp2_database_name {
@@ -174,13 +186,19 @@ variable wp3_nodeport {
 variable wp3_storage_size {
   type        = string
   default     = "20Gi"
-  description = "Database PersistentVolume and StorageClass size"
+  description = "App PersistentVolume and StorageClass size"
 }
 
 variable wp3_storage_path {
   type        = string
-  default     = "/kubernetes/pv/db/wordpress_3/"
+  default     = "/kubernetes/pv/wordpress_3/"
   description = "Database PersistentVolume mountpath"
+}
+
+variable wp3_storage_classname {
+  type        = string
+  default     = "wp3-frontend-sc"
+  description = "App StorageClass"
 }
 
 variable wp3_database_name {

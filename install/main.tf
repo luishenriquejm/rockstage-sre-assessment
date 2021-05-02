@@ -87,6 +87,11 @@ resource helm_release "wordpress" {
   }
 
   set {
+      name = "storage.className"
+      value = "${var.wp1_storage_classname}"
+  }
+
+  set {
       name = "database.name"
       value = "${var.wp1_database_name}"
   }
@@ -147,6 +152,11 @@ resource helm_release "wordpress_2" {
   set {
       name = "storage.path"
       value = "${var.wp2_storage_path}"
+  }
+
+set {
+      name = "storage.className"
+      value = "${var.wp2_storage_classname}"
   }
 
   set {
@@ -210,6 +220,11 @@ resource helm_release "wordpress_3" {
   set {
       name = "storage.path"
       value = "${var.wp3_storage_path}"
+  }
+
+set {
+      name = "storage.className"
+      value = "${var.wp3_storage_classname}"
   }
 
   set {
