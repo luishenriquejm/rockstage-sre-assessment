@@ -82,7 +82,120 @@ variable wp1_user_db {
   description = "User of DB"
 }
 
-variable wp1_user_db {
+variable wp1_user_password_db {
+  type        = string
+  default     = "secret"
+  description = "Password of User DB"
+}
+
+### CLIENT 2 ###
+
+variable wp2_phpmyadmin_nodeport {
+  type        = string
+  default     = "30022"
+  description = "PHPmyadmin NodePort"
+}
+
+variable wp2_helm_name {
+  type        = string
+  default     = "wp-frontend"
+  description = "Helm App Name"
+}
+
+variable wp2_app_name {
+  type        = string
+  default     = "wp-frontend"
+  description = "k8S App Name"
+}
+
+variable wp2_nodeport {
+  type        = string
+  default     = "30021"
+  description = "NodePort of App"
+}
+
+variable wp2_storage_size {
+  type        = string
+  default     = "20Gi"
+  description = "Database PersistentVolume and StorageClass size"
+}
+
+variable wp2_storage_path {
+  type        = string
+  default     = "/kubernetes/pv/db/wordpress_2/"
+  description = "Database PersistentVolume mountpath"
+}
+
+variable wp2_database_name {
+  type        = string
+  default     = "WPCLIENTE2"
+  description = "Database Name"
+}
+
+variable wp2_user_db {
+  type        = string
+  default     = "cliente2"
+  description = "User of DB"
+}
+
+variable wp2_user_password_db {
+  type        = string
+  default     = "secret"
+  description = "Password of User DB"
+}
+
+
+### CLIENT 3 ###
+
+variable wp3_phpmyadmin_nodeport {
+  type        = string
+  default     = "30032"
+  description = "PHPmyadmin NodePort"
+}
+
+variable wp3_helm_name {
+  type        = string
+  default     = "wp-frontend"
+  description = "Helm App Name"
+}
+
+variable wp3_app_name {
+  type        = string
+  default     = "wp-frontend"
+  description = "k8S App Name"
+}
+
+variable wp3_nodeport {
+  type        = string
+  default     = "30021"
+  description = "NodePort of App"
+}
+
+variable wp3_storage_size {
+  type        = string
+  default     = "20Gi"
+  description = "Database PersistentVolume and StorageClass size"
+}
+
+variable wp3_storage_path {
+  type        = string
+  default     = "/kubernetes/pv/db/wordpress_3/"
+  description = "Database PersistentVolume mountpath"
+}
+
+variable wp3_database_name {
+  type        = string
+  default     = "WPCLIENTE3"
+  description = "Database Name"
+}
+
+variable wp3_user_db {
+  type        = string
+  default     = "cliente3"
+  description = "User of DB"
+}
+
+variable wp3_user_password_db {
   type        = string
   default     = "secret"
   description = "Password of User DB"

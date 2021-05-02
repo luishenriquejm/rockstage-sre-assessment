@@ -22,7 +22,6 @@ resource "kubernetes_namespace" "minikube-namespace3" {
   }
 }
 
-
 resource helm_release "mysql" {
   name       = "${var.database_helm_name}"
   chart      = "./helm/mysql"
@@ -44,7 +43,7 @@ resource helm_release "mysql" {
   }
 
   set {
-      name = "database.root_password" # BASE64
+      name = "database.root_password"
       value = base64encode("${var.database_root_password}")
   }
 
@@ -93,9 +92,8 @@ resource helm_release "wordpress" {
   }
 
   set {
-      name = "database.root_password" # BASE64
+      name = "database.root_password"
       value = base64encode("${var.database_root_password}")
-      # value = "c2VjcmV0"
   }
 
   set {
@@ -110,15 +108,132 @@ resource helm_release "wordpress" {
 
   set {
       name = "database.usuario_senha"
-      value = "${var.wp1_user_db}"
+      value = "${var.wp1_user_password_db}"
   }
 
 
+#### CLIENT 2 ###
 
+resource helm_release "wordpress" {
+  name       = "${var.wp2_helm_name}"
+  chart      = "./helm/wordpress"
+  namespace  = "${var.namespace_2}"
 
+  set {
+      name = "phpmyadmin.nodeport"
+      value = "${var.wp2_phpmyadmin_nodeport}"
+  }
 
+  set {
+      name = "appname"
+      value = "${var.wp2_app_name}"
+  }
 
+  set {
+      name = "nodePort"
+      value = "${var.wp2_nodeport}"
+  }
 
+  set {
+      name = "wordpress.endereco_web"
+      value = "${var.wp_lan_ip_address}"
+  }
 
+  set {
+      name = "storage.size"
+      value = "${var.wp2_storage_size}"
+  }
+
+  set {
+      name = "storage.path"
+      value = "${var.wp2_storage_path}"
+  }
+
+  set {
+      name = "database.name"
+      value = "${var.wp2_database_name}"
+  }
+
+  set {
+      name = "database.root_password"
+      value = base64encode("${var.database_root_password}")
+  }
+
+  set {
+      name = "database.host"
+      value = "${var.database_host_address}"
+  }
+
+  set {
+      name = "database.usuario"
+      value = "${var.wp2_user_db}"
+  }
+
+  set {
+      name = "database.usuario_senha"
+      value = "${var.wp2_user_password_db}"
+  }
+
+#### CLIENT 3 ###
+
+resource helm_release "wordpress" {
+  name       = "${var.wp3_helm_name}"
+  chart      = "./helm/wordpress"
+  namespace  = "${var.namespace_3}"
+
+  set {
+      name = "phpmyadmin.nodeport"
+      value = "${var.wp3_phpmyadmin_nodeport}"
+  }
+
+  set {
+      name = "appname"
+      value = "${var.wp3_app_name}"
+  }
+
+  set {
+      name = "nodePort"
+      value = "${var.wp3_nodeport}"
+  }
+
+  set {
+      name = "wordpress.endereco_web"
+      value = "${var.wp_lan_ip_address}"
+  }
+
+  set {
+      name = "storage.size"
+      value = "${var.wp3_storage_size}"
+  }
+
+  set {
+      name = "storage.path"
+      value = "${var.wp3_storage_path}"
+  }
+
+  set {
+      name = "database.name"
+      value = "${var.wp3_database_name}"
+  }
+
+  set {
+      name = "database.root_password"
+      value = base64encode("${var.database_root_password}")
+  }
+
+  set {
+      name = "database.host"
+      value = "${var.database_host_address}"
+  }
+
+  set {
+      name = "database.usuario"
+      value = "${var.wp3_user_db}"
+  }
+
+  set {
+      name = "database.usuario_senha"
+      value = "${var.wp3_user_password_db}"
+  }
 
 }
