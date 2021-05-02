@@ -98,7 +98,7 @@ variable wp2_phpmyadmin_nodeport {
 
 variable wp2_helm_name {
   type        = string
-  default     = "wp-frontend"
+  default     = "wp-frontend2"
   description = "Helm App Name"
 }
 
@@ -155,7 +155,7 @@ variable wp3_phpmyadmin_nodeport {
 
 variable wp3_helm_name {
   type        = string
-  default     = "wp-frontend"
+  default     = "wp-frontend3"
   description = "Helm App Name"
 }
 
