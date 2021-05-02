@@ -92,6 +92,11 @@ resource helm_release "wordpress" {
   }
 
   set {
+      name = "storage.pv"
+      value = "${var.wp1_storage_pv}"
+  }
+
+  set {
       name = "database.name"
       value = "${var.wp1_database_name}"
   }
@@ -160,6 +165,11 @@ set {
   }
 
   set {
+      name = "storage.pv"
+      value = "${var.wp2_storage_pv}"
+  }
+
+  set {
       name = "database.name"
       value = "${var.wp2_database_name}"
   }
@@ -225,6 +235,11 @@ resource helm_release "wordpress_3" {
 set {
       name = "storage.className"
       value = "${var.wp3_storage_classname}"
+  }
+
+  set {
+      name = "storage.pv"
+      value = "${var.wp3_storage_pv}"
   }
 
   set {

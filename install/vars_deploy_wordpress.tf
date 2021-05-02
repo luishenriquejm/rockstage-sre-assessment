@@ -76,6 +76,12 @@ variable wp1_storage_classname {
   description = "App StorageClass"
 }
 
+variable wp1_storage_pv {
+  type        = string
+  default     = "pv-01"
+  description = "PersistentVolume Name"
+}
+
 variable wp1_database_name {
   type        = string
   default     = "WPCLIENTE1"
@@ -136,6 +142,12 @@ variable wp2_storage_classname {
   type        = string
   default     = "wp2-frontend-sc"
   description = "App StorageClass"
+}
+
+variable wp2_storage_pv {
+  type        = string
+  default     = "pv-02"
+  description = "PersistentVolume Name"
 }
 
 variable wp2_database_name {
@@ -199,6 +211,12 @@ variable wp3_storage_classname {
   type        = string
   default     = "wp3-frontend-sc"
   description = "App StorageClass"
+}
+
+variable wp3_storage_pv {
+  type        = string
+  default     = "pv-03"
+  description = "PersistentVolume Name"
 }
 
 variable wp3_database_name {
