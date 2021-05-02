@@ -110,7 +110,7 @@ resource helm_release "wordpress" {
       name = "database.usuario_senha"
       value = "${var.wp1_user_password_db}"
   }
-
+}
 
 #### CLIENT 2 ###
 
@@ -173,6 +173,7 @@ resource helm_release "wordpress" {
       name = "database.usuario_senha"
       value = "${var.wp2_user_password_db}"
   }
+}
 
 #### CLIENT 3 ###
 
