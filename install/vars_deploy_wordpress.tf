@@ -7,11 +7,7 @@
 variable wp_lan_ip_address {
   type        = string
   default     = "192.168.15.18"
-  description = "
-                   Attention: 
-  Put here the LAN IP Address (localhost/127.0.0.1 if run locally) 
-  of the server for correctly work, 
-  if incorrectly, that's needed to change directly in database"
+  description = "Put here the LAN IP Address (localhost/127.0.0.1 if run locally) of the server for correctly work, if incorrectly, that's needed to change directly in database"
 }
 ####################################################################
 ####################################################################
@@ -36,14 +32,7 @@ variable namespace_3 {
   description = "Name of Namespace"
 }
 
-### DATABASE APP
-
-
-
 ### CLIENT 1 ###
-
-
-
 
 variable wp1_phpmyadmin_nodeport {
   type        = string

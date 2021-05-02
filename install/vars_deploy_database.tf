@@ -3,15 +3,13 @@
 variable database_namespace {
   type        = string
   default     = "database"
-  description = "Name of Namespace"
+  description = "Name of Namespace *** ATTENTION *** If you change the default database you need tho change here too"
 }
 
 variable database_host_address {
   type        = string
   default     = "wordpress-db-mysql.database.svc.cluster.local"
-  description = "nameofservice.namespace.type.domain
-                        *** ATTENTION ***
-                 If you change the default database you need tho change here too"
+  description = "nameofservice.namespace.type.domain *** ATTENTION *** If you change the default database you need tho change here too"
 }
 
 variable database_helm_name {
