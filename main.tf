@@ -1,5 +1,5 @@
 provider "kubernetes" {
-  # config_context_cluster = "minikube"
+  config_context_cluster = "minikube"
   host = "https://127.0.0.1:8443"
 }
 
