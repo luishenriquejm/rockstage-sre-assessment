@@ -1,3 +1,25 @@
+# How to
+
+## Pre Requisites
+
+* Install Minikube
+* Install Terraform inside machine of minikube
+
 ```console
-minikube start --nodes 2 --driver=none
+minikube start
+```
+
+## Edit Vars
+
+* Edit variables of files:
+
+```console
+vars_deploy_database.tf
+vars_deploy_wordpress.tf
+```
+
+## Deploy with terraform
+
+```console
+terraform apply
 ```
