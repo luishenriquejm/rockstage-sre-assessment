@@ -1,11 +1,13 @@
 provider "kubernetes" {
   config_context_cluster = "minikube"
   host = "https://127.0.0.1:8443"
+  config_path = "~/.kube/config"
 }
 
 provider "helm" {
   kubernetes {
     host = "https://127.0.0.1:8443"
+    config_path = "~/.kube/config"
   }
 }
 
