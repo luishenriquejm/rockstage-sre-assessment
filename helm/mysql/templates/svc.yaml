@@ -10,10 +10,10 @@ spec:
   type: NodePort
   ports:
     - name: mysql
-      nodePort: 31010
+      nodePort: {{ .Values.nodePort }}
       port: 3306
       protocol: TCP
-      targetPort: mysql
+      targetPort: 3306
   selector:
     app: {{ .Values.appname }}
     tier: {{ .Values.tier }}

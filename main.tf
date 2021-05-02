@@ -20,11 +20,11 @@ terraform {
 }
 
 
-# resource "kubernetes_namespace" "minikube-namespace-db" {
-#   metadata {
-#         name = "database"
-#   }
-# }
+resource "kubernetes_namespace" "minikube-namespace-db" {
+  metadata {
+        name = "database"
+  }
+}
 
 resource "kubernetes_namespace" "minikube-namespace1" {
   metadata {
@@ -32,17 +32,17 @@ resource "kubernetes_namespace" "minikube-namespace1" {
   }
 }
 
-# resource "kubernetes_namespace" "minikube-namespace2" {
-#   metadata {
-#         name = "cliente2"
-#   }
-# }
+resource "kubernetes_namespace" "minikube-namespace2" {
+  metadata {
+        name = "cliente2"
+  }
+}
 
-# resource "kubernetes_namespace" "minikube-namespace3" {
-#   metadata {
-#         name = "cliente3"
-#   }
-# }
+resource "kubernetes_namespace" "minikube-namespace3" {
+  metadata {
+        name = "cliente3"
+  }
+}
 
 
 resource helm_release "mysql" {
