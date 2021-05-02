@@ -6,22 +6,25 @@ variable database_namespace {
   description = "Name of Namespace"
 }
 
+variable database_host_address {
+  type        = string
+  default     = "wordpress-db-mysql.database.svc.cluster.local"
+  description = "nameofservice.namespace.type.domain
+                        *** ATTENTION ***
+                 If you change the default database you need tho change here too"
+}
+
 variable database_helm_name {
   type        = string
   default     = "wp-database"
   description = "Helm App Name"
 }
 
+
 variable database_app_name {
   type        = string
   default     = "wordpress-db-mysql"
   description = "k8S App Name"
-}
-
-variable database_host_address {
-  type        = string
-  default     = "${var.database_app_name}.${var.database_namespace}.svc.cluster.local"
-  description = "nameofservice.namespace.svc.domain"
 }
 
 variable database_storage_size {
