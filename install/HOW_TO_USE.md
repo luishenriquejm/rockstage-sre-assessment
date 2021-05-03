@@ -4,7 +4,7 @@
 
 * Install Minikube
 * Install Terraform inside machine of minikube
-* Install Helm V3
+* Install Helm V3 inside machine of minikube
 
 ```console
 minikube start
@@ -12,11 +12,12 @@ minikube start
 
 ## Edit Vars
 
-* Edit variables of files:
+* Edit variables of files before first use:
 
 ```console
 vars_deploy_database.tf
 vars_deploy_wordpress.tf
+vars_deploy_phpmyadmin.tf
 ```
 
 ## Deploy with terraform
