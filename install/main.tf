@@ -49,6 +49,34 @@ resource helm_release "mysql" {
 
 }
 
+resource helm_release "phpmyadmin" {
+  name       = "${var.phpmyadmin_helm_name}"
+  chart      = "./helm/phpmyadmin"
+  namespace  = "${var.phpmyadmin_database_namespace}"
+
+  set {
+      name = "appname"
+      value = "${var.phpmyadmin_app_name}"
+  }
+
+  set {
+      name = "database.root_password"
+      value = base64encode("${var.phpmyadmin_root_password}")
+  }
+
+  set {
+      name = "nodePort"
+      value = "${var.phpmyadmin_nodePort}"
+  }
+
+  set {
+      name = "database.host"
+      value = "${var.phpmyadmin_database_host}"
+  }
+
+}
+
+
 #### CLIENT 1 ###
 
 resource helm_release "wordpress" {

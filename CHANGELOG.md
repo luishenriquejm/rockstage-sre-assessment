@@ -4,5 +4,4 @@
 * Added Init Container to wait a conection with MySQL
 * Configured MYSQL Statefullset, so that, replicas can have their own state for future clusters
 * Created a custom wordpress image with mysql_client and pushed to Dockerhub
-* Configured PHPMyAdmin to Deploy with WordPress chart, to separate Frontend x Backend
 * Created a custom Terraform script for local run
